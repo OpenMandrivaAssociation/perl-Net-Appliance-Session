@@ -12,7 +12,7 @@ Name: perl-Net-Appliance-Session
 Version: 1.36
 Release: %mkrel 1
 License: Artistic/GPL
-Group: Applications/CPAN
+Group: Development/Perl
 URL: http://search.cpan.org/dist/Net-Appliance-Session/
 Source: http://www.cpan.org/modules/by-module/Net/Net-Appliance-Session-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
