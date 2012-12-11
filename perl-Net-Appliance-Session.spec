@@ -1,60 +1,46 @@
-# $Id: perl-Net-Appliance-Session.spec 7981 2009-11-03 03:05:34Z dag $
-# Authority: dag
-# Upstream: Oliver Gorwits <oliver,gorwits$oucs,ox,ac,uk>
+%define upstream_name Net-Appliance-Session
+%define upstream_version 1.36
 
-%define perl_vendorlib %(eval "`%{__perl} -V:installvendorlib`"; echo $installvendorlib)
-%define perl_vendorarch %(eval "`%{__perl} -V:installvendorarch`"; echo $installvendorarch)
+%if %{_use_internal_dependency_generator}
+%define __noautoreq 'perl\\(Net::Appliance::Phrasebook\\)'
+%endif
 
-%define real_name Net-Appliance-Session
-
-Summary: Run command-line sessions to network appliances
-Name: perl-Net-Appliance-Session
-Version: 1.36
-Release: %mkrel 1
-License: Artistic/GPL
-Group: Development/Perl
-URL: http://search.cpan.org/dist/Net-Appliance-Session/
-Source: http://www.cpan.org/modules/by-module/Net/Net-Appliance-Session-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildArch: noarch
-BuildRequires: perl
+Summary:	Run command-line sessions to network appliances
+Name:		perl-%{upstream_name}
+Version:	%perl_convert_version %{upstream_version}
+Release:	3
+License:	Artistic/GPL
+Group:		Development/Perl
+URL:		http://search.cpan.org/dist/Net-Appliance-Session/
+Source:		http://www.cpan.org/modules/by-module/Net/%{upstream_name}-%{upstream_version}.tar.gz
+BuildRequires:	perl-devel
+BuildArch:	noarch
 
 %description
 Run command-line sessions to network appliances
 
 %prep
-%setup -q -n %{real_name}-%{version}
+%setup -q -n %{upstream_name}-%{upstream_version}
 
 %build
-%{__perl} Makefile.PL INSTALLDIRS="vendor" PREFIX="%{buildroot}%{_prefix}"
-%{__make} %{?_smp_mflags}
+perl Makefile.PL INSTALLDIRS=vendor
+%make
 
 %install
-%{__rm} -rf %{buildroot}
-%{__make} pure_install
-
-### Clean up buildroot
-find %{buildroot} -name .packlist -exec %{__rm} {} \;
+%makeinstall_std
 
 ### Clean up docs
 find examples/ -type f -exec %{__chmod} a-x {} \;
 
-%clean
-%{__rm} -rf %{buildroot}
-
 %files
-%defattr(-, root, root, 0755)
 %doc Changes INSTALL MANIFEST META.yml README examples/
-%doc %{_mandir}/man3/Net::Appliance::Session.3pm*
-%doc %{_mandir}/man3/Net::Appliance::Session::*.3pm*
-%dir %{perl_vendorlib}/Net/
-%dir %{perl_vendorlib}/Net/Appliance/
-%{perl_vendorlib}/Net/Appliance/Session/
+%{_mandir}/man3/*.3pm*
+%{perl_vendorlib}/Net/Appliance/Session
 %{perl_vendorlib}/Net/Appliance/Session.pm
 
 %changelog
-* Sat Jul  4 2009 Christoph Maser <cmr@financial.com> - 1.36-1 - 7981/dag
-- Updated to version 1.36.
+* Tue Sep 27 2011 Leonardo Coelho <leonardoc@mandriva.com> 1.36-1mdv2012.0
++ Revision: 701541
+- first mandriva version
+- Created package structure for 'perl-Net-Appliance-Session'.
 
-* Tue Sep 16 2008 Dag Wieers <dag@wieers.com> - 1.24-1
-- Initial package. (using DAR)
