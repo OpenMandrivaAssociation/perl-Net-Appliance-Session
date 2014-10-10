@@ -8,7 +8,7 @@
 Summary:	Run command-line sessions to network appliances
 Name:		perl-%{upstream_name}
 Version:	%perl_convert_version %{upstream_version}
-Release:	1
+Release:	2
 License:	Artistic/GPL
 Group:		Development/Perl
 URL:		http://search.cpan.org/dist/Net-Appliance-Session/
