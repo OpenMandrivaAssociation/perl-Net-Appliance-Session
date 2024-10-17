@@ -11,7 +11,7 @@ Version:	%perl_convert_version %{upstream_version}
 Release:	3
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		http://search.cpan.org/dist/Net-Appliance-Session/
+URL:		https://search.cpan.org/dist/Net-Appliance-Session/
 Source:		http://www.cpan.org/modules/by-module/Net/Net-Appliance-Session-%{upstream_version}.tar.gz
 BuildRequires:	perl-devel
 BuildArch:	noarch
