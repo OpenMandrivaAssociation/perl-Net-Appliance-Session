@@ -1,5 +1,5 @@
 %define upstream_name Net-Appliance-Session
-%define upstream_version 4.131260
+%define upstream_version 4.300005
 
 %if %{_use_internal_dependency_generator}
 %define __noautoreq 'perl\\(Net::Appliance::Phrasebook\\)'
@@ -7,12 +7,12 @@
 
 Summary:	Run command-line sessions to network appliances
 Name:		perl-%{upstream_name}
-Version:	%perl_convert_version %{upstream_version}
-Release:	3
+Version:	%{upstream_version}
+Release:	1
 License:	Artistic/GPL
 Group:		Development/Perl
-URL:		https://search.cpan.org/dist/Net-Appliance-Session/
-Source:		http://www.cpan.org/modules/by-module/Net/Net-Appliance-Session-%{upstream_version}.tar.gz
+URL:		https://github.com/ollyg/Net-Appliance-Session
+Source:		https://cpan.metacpan.org/authors/id/O/OL/OLIVER/Net-Appliance-Session-%{upstream_version}.tar.gz
 BuildRequires:	make
 BuildRequires:	perl-devel
 BuildArch:	noarch
